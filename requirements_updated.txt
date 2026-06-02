@@ -1,0 +1,95 @@
+
+REQUIREMENTS.TXT - ATUALIZADO PARA 4GB DE DADOS
+
+Instalar com: pip install -r requirements.txt
+
+
+ CORE - Flask & Web
+
+Flask>=2.3.0,<3.0.0
+Flask-SQLAlchemy>=3.0.0,<4.0.0
+Flask-Cors>=4.0.0,<5.0.0
+
+
+DATABASE - PostgreSQL Driver
+
+   Use psycopg2-binary para fácil instalação (production: compilar)
+psycopg2-binary>=2.9.0,<3.0.0
+
+ Migrações de banco de dados
+alembic>=1.13.0,<2.0.0
+
+
+ CACHING - Redis & Distribuído
+
+ Servidor cache em memória
+redis>=5.0.0,<6.0.0
+
+# Integração com Flask
+Flask-Caching>=2.0.0,<3.0.0
+
+#
+# ENVIRONMENT & CONFIGURATION
+#
+# Carregar variáveis de .env
+python-dotenv>=1.0.0,<2.0.0
+
+gunicorn>=20.1.0,<21.0.0
+
+
+# SECURITY & HASHING
+
+Werkzeug>=2.3.0,<3.0.0
+PyJWT>=2.8.0,<3.0.0
+
+
+# DATA VALIDATION & SERIALIZATION
+
+# Marshmallow para validação/serialização
+marshmallow>=3.20.0,<4.0.0
+marshmallow-sqlalchemy>=0.29.0,<1.0.0
+
+
+# DATABASE UTILITIES
+
+# Utilitários para SQLAlchemy (tipos, índices, etc)
+sqlalchemy-utils>=0.41.0,<1.0.0
+
+
+# OPTIONAL - Monitoramento & Debug
+
+# Para development
+# flask-debugtoolbar>=0.14.0,<1.0.0
+
+# Para production monitoring
+# sentry-sdk>=1.40.0,<2.0.0
+
+
+# OPTIONAL - Performance
+
+# Query caching avançado
+# dogpile.cache>=1.3.0,<2.0.0
+
+# NOTES
+
+ 
+ DEVELOPMENT vs PRODUCTION:
+ - Dev: Pode usar Redis em memoria (Cache simples) ou skip
+ - Prod: Deve usar Redis real + PostgreSQL
+
+ INSTALAÇÃO:
+ 1. python -m venv venv
+ 2. source venv/Scripts/activate  (Windows)
+ 3. pip install --upgrade pip
+ 4. pip install -r requirements.txt
+
+ POSTGRESQL LOCAL (Docker):
+docker run --name postgres-healthcore -e POSTGRES_PASSWORD=dev -p 5432:5432 -d postgres
+ docker exec -it postgres-healthcore psql -U postgres -c "CREATE DATABASE healthcore_db;"
+
+ REDIS LOCAL (Docker):
+ docker run --name redis-healthcore -p 6379:6379 -d redis:latest
+
+ TESTAR:
+python -m flask run
+ curl http://localhost:5000/health
