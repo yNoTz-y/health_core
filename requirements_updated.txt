@@ -1,10 +1,8 @@
+# REQUIREMENTS.TXT - ATUALIZADO PARA 4GB DE DADOS
+#
+# Instalar com: pip install -r requirements_updated.txt
 
-REQUIREMENTS.TXT - ATUALIZADO PARA 4GB DE DADOS
-
-Instalar com: pip install -r requirements.txt
-
-
- CORE - Flask & Web
+# CORE - Flask & Web
 
 Flask>=2.3.0,<3.0.0
 Flask-SQLAlchemy>=3.0.0,<4.0.0
