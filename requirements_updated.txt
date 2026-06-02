@@ -57,17 +57,16 @@ sqlalchemy-utils>=0.41.0,<1.0.0
 # INSTALAÇÃO:
 # 1. python -m venv venv
 # 2. source venv/Scripts/activate  (Windows)
-
- 3. pip install --upgrade pip
- 4. pip install -r requirements.txt
-
- POSTGRESQL LOCAL (Docker):
-docker run --name postgres-healthcore -e POSTGRES_PASSWORD=dev -p 5432:5432 -d postgres
- docker exec -it postgres-healthcore psql -U postgres -c "CREATE DATABASE healthcore_db;"
-
- REDIS LOCAL (Docker):
- docker run --name redis-healthcore -p 6379:6379 -d redis:latest
-
- TESTAR:
-python -m flask run
- curl http://localhost:5000/health
+# 3. pip install --upgrade pip
+# 4. pip install -r requirements.txt
+#
+# POSTGRESQL LOCAL (Docker):
+# docker run --name postgres-healthcore -e POSTGRES_PASSWORD=dev -p 5432:5432 -d postgres
+# docker exec -it postgres-healthcore psql -U postgres -c "CREATE DATABASE healthcore_db;"
+#
+# REDIS LOCAL (Docker):
+# docker run --name redis-healthcore -p 6379:6379 -d redis:latest
+#
+# TESTAR:
+# python -m flask run
+# curl http://localhost:5000/health
