@@ -11,11 +11,6 @@ Flask-Cors>=4.0.0,<5.0.0
 # Use psycopg2-binary para fácil instalação (production: compilar)
 psycopg2-binary>=2.9.0,<3.0.0
 
-matplotlib>=3.8.0,<4.0.0
-pandas>=2.2.0,<3.0.0
-numpy>=1.26.0,<3.0.0
-reportlab>=4.0.0,<5.0.0
-
 # Migrações de banco de dados
 alembic>=1.13.0,<2.0.0
 
@@ -47,8 +42,7 @@ marshmallow-sqlalchemy>=0.29.0,<1.0.0
 # Utilitários para SQLAlchemy (tipos, índices, etc)
 sqlalchemy-utils>=0.41.0,<1.0.0
 
-
-
+requests>=2.31.0,<3.0.0 
 # OPTIONAL - Monitoramento & Debug
 # Para development
 # flask-debugtoolbar>=0.14.0,<1.0.0
