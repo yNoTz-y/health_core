@@ -1233,21 +1233,25 @@ def internal_error(error):
     db.session.rollback()
     return jsonify({"success": False, "message": "Erro interno do servidor"}), 500
 
-import zipfile
+import requests # pyright: ignore[reportMissingModuleSource]
 import os
 
-# Verifica se o CSV NÃO existe, mas o ZIP EXISTE, e extrai o CSV do ZIP
-if not os.path.exists('banco_limpo - Copia.csv') and os.path.exists('banco.dat'):
-    logger.info("Extraindo a base de dados CSV do arquivo DAT...")
-    
-    with zipfile.ZipFile('banco.dat', 'r') as zip_ref:
-        zip_ref.extractall('.')
-        
-import time
-time.sleep(2) 
-import os
-logger.info(f"Arquivos na pasta atual: {os.listdir('.')}")
-logger.info("Extração concluída.")
+# Link direto para o seu arquivo CSV (substitua o link abaixo)
+URL_DO_ARQUIVO = "https://drive.google.com/uc?export=download&id=1IwgcbMBqsJq6Ej7v-lBuPYp3Ij4wFVig"
+NOME_DO_ARQUIVO = "banco_limpo - Copia.csv"
+
+if not os.path.exists(NOME_DO_ARQUIVO):
+    logger.info("Baixando a base de dados da internet...")
+    try:
+        response = requests.get(URL_DO_ARQUIVO)
+        if response.status_code == 200:
+            with open(NOME_DO_ARQUIVO, 'wb') as f:
+                f.write(response.content)
+            logger.info("Download concluído com sucesso!")
+        else:
+            logger.error(f"Erro ao baixar arquivo. Status: {response.status_code}")
+    except Exception as e:
+        logger.error(f"Erro ao conectar com a internet: {e}")
     
 # 1. Cria as tabelas para o Render (Gunicorn)
 with app.app_context():
