@@ -10,9 +10,11 @@ Flask-Cors>=4.0.0,<5.0.0
 # DATABASE - PostgreSQL Driver
 # Use psycopg2-binary para fácil instalação (production: compilar)
 psycopg2-binary>=2.9.0,<3.0.0
+
 matplotlib>=3.8.0,<4.0.0
 pandas>=2.2.0,<3.0.0
 numpy>=1.26.0,<3.0.0
+reportlab>=4.0.0,<5.0.0
 
 # Migrações de banco de dados
 alembic>=1.13.0,<2.0.0
@@ -31,7 +33,6 @@ setuptools<=80.10.2
 wheel>=0.40.0,<1.0.0
 
 gunicorn==22.0.0
-reportlab>=4.0.0,<5.0.0
 
 # SECURITY & HASHING
 Werkzeug>=2.3.0,<3.0.0
