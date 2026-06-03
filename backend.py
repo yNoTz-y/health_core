@@ -1210,8 +1210,8 @@ def health_check():
 
 @app.route('/', methods=['GET'])
 def root():
-    """Redireciona para o dashboard"""
-    return send_file(os.path.join(app.static_folder, 'index.html'))
+    """Retorna status da API para o Netlify"""
+    return jsonify({"status": "API Online", "message": "Backend funcionando. Interface hospedada no Netlify!"}), 200
 
 @app.route('/dashboard/', methods=['GET'])
 def dashboard_page():
@@ -1228,19 +1228,47 @@ def dashboard_index():
 def not_found(error):
     return jsonify({"success": False, "message": "Endpoint não encontrado"}), 404
 
+@app.errorhandler(500)
+def internal_error(error):
+    db.session.rollback()
+    return jsonify({"success": False, "message": "Erro interno do servidor"}), 500
+
+import zipfile
+import os
+
+# Verifica se o CSV NÃO existe, mas o ZIP EXISTE
+if not os.path.exists('banco_limpo - Copia.csv') and os.path.exists('banco.zip'):
+    logger.info("Extraindo a base de dados CSV do arquivo ZIP...")
+    with zipfile.ZipFile('banco.zip', 'r') as zip_ref:
+        zip_ref.extractall('.')
+
+# 1. Cria as tabelas para o Render (Gunicorn)
+with app.app_context():
+    create_tables_and_seed()
+
+# 2. Inicia o servidor apenas se rodar localmente
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    debug = os.environ.get('FLASK_DEBUG', 'True').lower() == 'true'
+
+    logger.info(f'Iniciando servidor na porta {port} (debug={debug})')
+    app.run(host='0.0.0.0', port=port, debug=debug)
+
 
 @app.errorhandler(500)
 def internal_error(error):
     db.session.rollback()
     return jsonify({"success": False, "message": "Erro interno do servidor"}), 500
 
+with app.app_context():
+    create_tables_and_seed()
 
 if __name__ == '__main__':
-    with app.app_context():
-        create_tables_and_seed()
-
+ 
     port = int(os.environ.get('PORT', 5000))
     debug = os.environ.get('FLASK_DEBUG', 'True').lower() == 'true'
 
     logger.info(f'Iniciando servidor na porta {port} (debug={debug})')
     app.run(host='0.0.0.0', port=port, debug=debug)
+    
+    
