@@ -46,5 +46,4 @@ sqlalchemy-utils>=0.41.0,<1.0.0
 # - os
 # - datetime
 # - math
-
-requests
+matplotlib

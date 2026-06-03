@@ -27,6 +27,8 @@ python-dotenv>=1.0.0,<2.0.0
 setuptools<=80.10.2 
 wheel>=0.40.0,<1.0.0
 
+matplotlib >=3.7.0,<4.0.0
+
 gunicorn==22.0.0
 
 # SECURITY & HASHING
@@ -42,7 +44,6 @@ marshmallow-sqlalchemy>=0.29.0,<1.0.0
 # Utilitários para SQLAlchemy (tipos, índices, etc)
 sqlalchemy-utils>=0.41.0,<1.0.0
 
-requests>=2.31.0,<3.0.0 
 # OPTIONAL - Monitoramento & Debug
 # Para development
 # flask-debugtoolbar>=0.14.0,<1.0.0
