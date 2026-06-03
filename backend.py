@@ -1242,6 +1242,12 @@ if not os.path.exists('banco_limpo - Copia.csv') and os.path.exists('banco.zip')
     with zipfile.ZipFile('banco.zip', 'r') as zip_ref:
         zip_ref.extractall('.')
 
+import time
+time.sleep(2) 
+import os
+logger.info(f"Arquivos na pasta atual: {os.listdir('.')}")
+logger.info("Extração concluída.")
+    
 # 1. Cria as tabelas para o Render (Gunicorn)
 with app.app_context():
     create_tables_and_seed()
