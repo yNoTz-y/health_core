@@ -1236,12 +1236,13 @@ def internal_error(error):
 import zipfile
 import os
 
-# Verifica se o CSV NÃO existe, mas o ZIP EXISTE
-if not os.path.exists('banco_limpo - Copia.csv') and os.path.exists('banco.zip'):
-    logger.info("Extraindo a base de dados CSV do arquivo ZIP...")
-    with zipfile.ZipFile('banco.zip', 'r') as zip_ref:
+# Verifica se o CSV NÃO existe, mas o ZIP EXISTE, e extrai o CSV do ZIP
+if not os.path.exists('banco_limpo - Copia.csv') and os.path.exists('banco.dat'):
+    logger.info("Extraindo a base de dados CSV do arquivo DAT...")
+    
+    with zipfile.ZipFile('banco.dat', 'r') as zip_ref:
         zip_ref.extractall('.')
-
+        
 import time
 time.sleep(2) 
 import os
