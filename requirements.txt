@@ -1,0 +1,49 @@
+# Core Flask Framework
+Flask>=2.3.0,<3.0.0
+
+# Database ORM
+Flask-SQLAlchemy>=3.0.0,<4.0.0
+
+# CORS Support
+Flask-Cors>=4.0.0,<5.0.0
+
+# Security & Password Hashing
+Werkzeug>=2.3.0,<3.0.0
+
+# JWT Authentication
+PyJWT>=2.8.0,<3.0.0
+
+# Environment Variables
+python-dotenv>=1.0.0,<2.0.0
+setuptools>=68.0.0,<100.0.0
+wheel>=0.40.0,<1.0.0
+
+# WSGI Server
+gunicorn>=20.1.0,<21.0.0
+
+# Caching
+Flask-Caching>=2.0.0,<3.0.0
+
+# Redis (optional for production caching)
+redis>=5.0.0,<6.0.0
+
+# PostgreSQL Support (for production)
+psycopg2-binary>=2.9.0,<3.0.0
+
+# Database Migrations
+alembic>=1.13.0,<2.0.0
+
+# Data Validation
+marshmallow>=3.20.0,<4.0.0
+marshmallow-sqlalchemy>=0.29.0,<1.0.0
+
+# Advanced SQLAlchemy utilities
+sqlalchemy-utils>=0.41.0,<1.0.0
+
+# Python Standard Library (no install needed):
+# - re (regex)
+# - logging
+# - os
+# - datetime
+# - math
+
